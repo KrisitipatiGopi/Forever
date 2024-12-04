@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cart: [],
+    price: 0,
   },
   reducers: {
     addItems: (state, action) => {
@@ -16,11 +17,13 @@ const cartSlice = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
+      state.price = state.cart.reduce((total, item) => total + item.price * item.quantity, 0);
     },
     removeItem: (state, action) => {
       state.cart = state.cart.filter(
         (each) => each._id !== action.payload._id || each.selectedSize !== action.payload.selectedSize
       );
+      state.price = state.cart.reduce((total, item) => total + item.price * item.quantity, 0);
     },
     decreaseQuantity: (state, action) => {
       const cartItem = state.cart.find(
@@ -29,9 +32,8 @@ const cartSlice = createSlice({
       );
       if (cartItem && cartItem.quantity > 1) {
         cartItem.quantity -= 1;
-      } else {
-        // Optional: If quantity is 1, do nothing
       }
+      state.price = state.cart.reduce((total, item) => total + item.price * item.quantity, 0);
     },
   },
 });

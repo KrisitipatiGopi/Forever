@@ -1,8 +1,9 @@
-import React from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { assets } from "../Utils/assets/frontend_assets/assets";
 import { useNavigate } from "react-router-dom";
 import { addItems, decreaseQuantity, removeItem } from "../Utils/cartSLice";
+import CartTotal from "./CartTotal";
 
 
 
@@ -71,6 +72,7 @@ const Cart = () => {
           </div>
         ))}
       </div>
+      <CartTotal />
     </div>
   );
 };

@@ -10,7 +10,7 @@ const LatestCard = ({item}) => {
     <Link to={`/collections/${_id}`}><div>
         <img src={image1} alt={name} className='w-56' />
         <p className='text-xs'>{name}</p>
-        <p className='text-sm font-semibold'>Rs&nbsp;{price * 85 / 10}</p>
+        <p className='text-sm font-semibold'>${price}</p>
     </div>
     </Link>
   )
