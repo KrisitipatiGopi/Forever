@@ -5,7 +5,6 @@ const LatestCard = ({item}) => {
     const {_id,name,price} = item;
     const {image} = item;
     const image1 = image[0];
-    //console.log(_id)
   return (
     <Link to={`/collections/${_id}`}><div>
         <img src={image1} alt={name} className='w-56' />
